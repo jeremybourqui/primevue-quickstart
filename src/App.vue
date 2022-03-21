@@ -8,6 +8,35 @@
         <Button type="submit" label="Submit"/>
         <h3>{{message}}</h3>
       </form>
+      <Calendar v-model="value" />
+      <ColorPicker v-model="color" />
+          
+            <div class="card">
+            <h5>Nested</h5>
+            <Splitter style="height: 300px">
+                <SplitterPanel class="flex align-items-center justify-content-center" :size="20" :minSize="10">
+                    Panel 1
+                </SplitterPanel>
+                <SplitterPanel :size="80">
+                    <Splitter layout="vertical">
+                        <SplitterPanel class="flex align-items-center justify-content-center" :size="15">
+                            Panel 2
+                        </SplitterPanel>
+                        <SplitterPanel :size="85">
+                            <Splitter>
+                                <SplitterPanel class="flex align-items-center justify-content-center" :size="20">
+                                    Panel 3
+                                </SplitterPanel>
+                                <SplitterPanel class="flex align-items-center justify-content-center" :size="80">
+                                    Panel 4
+                                </SplitterPanel>
+                            </Splitter>
+                        </SplitterPanel>
+                    </Splitter>
+                </SplitterPanel>
+            </Splitter>
+        </div>
+    
     </div>
 
     <Toast/>
@@ -15,13 +44,19 @@
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import HelloWorld from './components/HelloWorld.vue';
+import Calendar from 'primevue/calendar';
+import ColorPicker from 'primevue/colorpicker';
+import Splitter from 'primevue/splitter';
+import SplitterPanel from 'primevue/splitterpanel';
 
 export default {
     data() {
         return {
             message: null,
-            text: null
+            text: null,
+            value: null,
+            color: 'red'
         }
     },
     methods: {
@@ -31,7 +66,11 @@ export default {
         }
     },
     components: {
-      HelloWorld
+      HelloWorld,
+      Calendar,
+      ColorPicker,
+      Splitter,
+      SplitterPanel
     }
 }
 </script>
